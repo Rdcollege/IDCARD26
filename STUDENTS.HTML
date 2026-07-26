@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
 <title>Student ID Card</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,29 +17,37 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
+
 background:#dbe7f6;
 display:flex;
 justify-content:center;
 align-items:flex-start;
 padding:30px;
 min-height:100vh;
+
 }
 
 #card{
+
 width:100%;
 max-width:430px;
+
 }
 
+
 .id-card{
+
 background:#fff;
 border-radius:22px;
 overflow:hidden;
 box-shadow:0 12px 35px rgba(0,0,0,.35);
 border:3px solid #1565C0;
 position:relative;
+
 }
 
 .id-card:before{
+
 content:"GOVT COLLEGE";
 position:absolute;
 left:50%;
@@ -52,40 +58,52 @@ font-weight:bold;
 color:rgba(0,0,0,.04);
 white-space:nowrap;
 pointer-events:none;
+
 }
 
 .header{
+
 background:linear-gradient(90deg,#0D47A1,#1565C0,#42A5F5);
 padding:16px;
 display:flex;
 align-items:center;
 color:white;
+
 }
 
 .logo{
+
 width:60px;
 height:60px;
 border-radius:50%;
 background:white;
 padding:3px;
 margin-right:15px;
+
 }
 
 .college{
+
 flex:1;
+
 }
 
 .college h2{
+
 font-size:15px;
 font-weight:700;
+
 }
 
 .college p{
+
 font-size:11px;
 opacity:.95;
+
 }
 
 .title{
+
 background:#0D47A1;
 color:white;
 padding:10px;
@@ -93,28 +111,36 @@ text-align:center;
 font-size:15px;
 font-weight:700;
 letter-spacing:1px;
+
 }
 
 .top{
+
 display:flex;
 justify-content:space-between;
 padding:18px;
+
 }
 
 .photo{
+
 width:120px;
 height:140px;
 border-radius:12px;
 border:4px solid #1976D2;
 box-shadow:0 8px 18px rgba(0,0,0,.30);
 object-fit:cover;
+
 }
 
 .session{
+
 text-align:right;
+
 }
 
 .session span{
+
 display:inline-block;
 background:#1976D2;
 color:white;
@@ -122,120 +148,161 @@ padding:8px 14px;
 border-radius:25px;
 font-weight:600;
 font-size:14px;
+
 }
 
 .name{
+
 text-align:center;
 font-size:22px;
 font-weight:700;
 color:#0D47A1;
 margin-top:-5px;
 margin-bottom:10px;
+
 }
 
 .details{
+
 padding:15px;
+
 }
 
 table{
+
 width:100%;
 border-collapse:collapse;
 font-size:13px;
+
 }
 
 table tr:nth-child(even){
+
 background:#F7F9FC;
+
 }
 
 table td{
+
 padding:8px;
 border-bottom:1px solid #E3E3E3;
+
 }
 
 .label{
+
 font-weight:600;
 color:#0D47A1;
 width:40%;
+
 }
 
 .colon{
+
 width:5%;
+
 }
 
 .value{
+
 width:55%;
+
 }
 
 .badge{
+
 padding:5px 12px;
 border-radius:20px;
 font-size:12px;
 font-weight:bold;
 color:white;
+
 }
 
 .green{
+
 background:#2E7D32;
+
 }
 
 .red{
+
 background:#C62828;
+
 }
 
 .qr-box{
+
 margin:15px;
 background:#F7F7F7;
 border-radius:15px;
 padding:15px;
 text-align:center;
+
 }
 
 .qr-box img{
+
 width:120px;
+
 }
 
 .userid{
+
 font-weight:700;
 color:#0D47A1;
 margin-top:8px;
+
 }
 
 .footer{
+
 background:#E3F2FD;
 display:flex;
 justify-content:space-between;
 padding:18px;
 font-size:12px;
 text-align:center;
+
 }
 
 .footer div{
+
 width:45%;
+
 }
 
 .footer strong{
+
 display:block;
 margin-bottom:5px;
+
 }
 
 .credit{
+
 background:#0D47A1;
 color:white;
 padding:8px;
 text-align:center;
 font-size:11px;
+
 }
 
 @media(max-width:480px){
 
 .top{
+
 flex-direction:column;
 align-items:center;
 gap:15px;
+
 }
 
 .session{
+
 text-align:center;
+
 }
 
 }
@@ -247,269 +314,198 @@ text-align:center;
 <body>
 
 <div id="card"></div>
+
 <script>
 
-const sheetId = "1Ona1thP9bqtVGF4k7F8VGR5RGUKD9L01p-o68k5ziEk";
-const apiKey = "AIzaSyDFy7OEmx1dj4z2RzPhGA3_b4TNPgcIzEY";
-const sheetName = "IDCARD";
+    const student = {
+    
+    NAME:"Rahul Kumar",
+    FNAME:"Shri Ram Kumar",
+    MNAME:"Smt. Sita Devi",
+    DOB:"15/08/2005",
+    CLASS:"B.Sc. Part-I",
+    SUBJECT:"Mathematics",
+    ADMNO:"202600123",
+    ADMDATE:"10/07/2026",
+    BG:"O+",
+    ADDAR:"1234 5678 9012",
+    ADDRESS:"Village Wadrafnagar",
+    DIST:"Balrampur",
+    MO:"9876543210",
+    EMAILID:"rahul@gmail.com",
+    ABCID:"ABC123456789",
+    STATUS:"ACTIVE",
+    PHOTO:"https://via.placeholder.com/120x140.png?text=PHOTO"
+    
+    };
+    
+    const active = student.STATUS.toLowerCase()=="active";
+    
+    const qr="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com";
+    
+    document.getElementById("card").innerHTML=`
+    
+    <div class="id-card">
+    
+    <div class="header">
+    
+    <img class="logo"
+    src="https://raw.githubusercontent.com/rdcollege/idcard/main/photo/LOGO.png">
+    
+    <div class="college">
+    
+    <h2>Govt. Rani Durgawati College</h2>
+    
+    <p>Wadrafnagar, Dist. Balrampur (C.G.)</p>
+    
+    </div>
+    
+    </div>
+    
+    <div class="title">
+    
+    STUDENT ID CARD
+    
+    </div>
+    
+    <div class="top">
+    
+    <img class="photo"
+    
+    src="${student.PHOTO}">
+    
+    <div class="session">
+    
+    <span>SESSION<br>2026-27</span>
+    
+    </div>
+    
+    </div>
+    
+    <div class="name">${student.NAME}</div>
+    
+    <div class="details">
+    
+    <table>
+    
+    <tr><td class="label">Father's Name</td><td class="colon">:</td><td class="value">${student.FNAME}</td></tr>
+    
+    <tr><td class="label">Mother's Name</td><td class="colon">:</td><td class="value">${student.MNAME}</td></tr>
+    
+    <tr><td class="label">DOB</td><td class="colon">:</td><td class="value">${student.DOB}</td></tr>
+    
+    <tr><td class="label">Class</td><td class="colon">:</td><td class="value">${student.CLASS}</td></tr>
+    
+    <tr><td class="label">Subject</td><td class="colon">:</td><td class="value">${student.SUBJECT}</td></tr>
+    
+    <tr><td class="label">Admission No.</td><td class="colon">:</td><td class="value">${student.ADMNO}</td></tr>
+    
+    <tr><td class="label">Admission Date</td><td class="colon">:</td><td class="value">${student.ADMDATE}</td></tr>
+    
+    <tr><td class="label">Blood Group</td><td class="colon">:</td><td class="value">${student.BG}</td></tr>
+    
+    <tr><td class="label">Aadhaar No.</td><td class="colon">:</td><td class="value">${student.ADDAR}</td></tr>
+    
+    <tr><td class="label">Address</td><td class="colon">:</td><td class="value">${student.ADDRESS}</td></tr>
+    
+    <tr><td class="label">District</td><td class="colon">:</td><td class="value">${student.DIST}</td></tr>
+    
+    <tr><td class="label">Mobile</td><td class="colon">:</td><td class="value">${student.MO}</td></tr>
+    
+    <tr><td class="label">Email</td><td class="colon">:</td><td class="value">${student.EMAILID}</td></tr>
+    
+    <tr><td class="label">ABC ID</td><td class="colon">:</td><td class="value">${student.ABCID}</td></tr>
+    
+    <tr>
+    
+    <td class="label">Status</td>
+    
+    <td class="colon">:</td>
+    
+    <td class="value">
+    
+    <span class="badge ${active?'green':'red'}">
+    
+    ${student.STATUS}
+    
+    </span>
+    
+    </td>
+    
+    </tr>
+    
+    </table>
+    
+    </div>
+    
+    <div class="qr-box">
+    
+    <img src="${qr}">
+    
+    <div class="userid">
+    
+    ID : 202600123
+    
+    </div>
+    
+    </div>
+    
+    <div class="footer">
+    
+    <div>
+    
+    <strong>Principal</strong>
+    
+    _________________
+    
+    </div>
+    
+    <div>
+    
+    <strong>College Seal</strong>
+    
+    (Official Seal)
+    
+    </div>
+    
+    </div>
+    
+    <div class="credit">
+    
+    Govt. Rani Durgawati College
+    
+    </div>
+    
+    </div>
+    
+    `;
+    
+    </script>
 
-const params = new URLSearchParams(window.location.search);
-const userId = params.get("id");
-const card = document.getElementById("card");
 
-if (!userId) {
 
-card.innerHTML = `
-<div style="padding:40px;text-align:center;color:red;font-size:22px;font-weight:bold;">
-USER ID Missing
-</div>
-`;
 
-} else {
 
-const url =
-`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`;
 
-fetch(url)
 
-.then(res => res.json())
 
-.then(data => {
 
-const rows = data.values;
-const headers = rows[0];
 
-const index = headers.indexOf("USERID");
 
-const student = rows.find(r => r[index] === userId);
 
-if (!student) {
 
-card.innerHTML = `
-<div style="padding:40px;text-align:center;color:red;font-size:22px;font-weight:bold;">
-Student Not Found
-</div>
-`;
 
-return;
 
-}
 
-const get = field => student[headers.indexOf(field)] || "";
 
-const active = get("STATUS").toLowerCase() === "active";
 
-const qr =
-`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rdcollege.github.io/IDCARD26/STUDENTS.HTML?id=${userId}`;
 
-card.innerHTML = `
-<div class="id-card">
 
-<div class="header">
 
-<img
-class="logo"
-src="PHOTO/onlylogo.png"
-alt="Logo">
 
-<div class="college">
 
-<h2>Govt. Rani Durgawati College</h2>
 
-<p>Wadrafnagar, Dist. Balrampur (C.G.)</p>
-
-</div>
-
-</div>
-
-<div class="title">
-
-STUDENT ID CARD
-
-</div>
-
-<div class="top">
-
-<img
-class="photo"
-src="PHOTO/${get("PHOTO")}"
-alt="Student Photo">
-
-<div class="session">
-
-<span>
-SESSION<br>2026-27
-</span>
-
-</div>
-
-</div>
-
-<div class="name">
-
-${get("NAME")}
-
-</div>
-
-<div class="details">
-
-<table>
-<tr>
-<td class="label">Father's Name</td>
-<td class="colon">:</td>
-<td class="value">${get("FNAME")}</td>
-</tr>
-
-<tr>
-<td class="label">Mother's Name</td>
-<td class="colon">:</td>
-<td class="value">${get("MNAME")}</td>
-</tr>
-
-<tr>
-<td class="label">Date of Birth</td>
-<td class="colon">:</td>
-<td class="value">${get("DOB")}</td>
-</tr>
-
-<tr>
-<td class="label">Class</td>
-<td class="colon">:</td>
-<td class="value">${get("CLASS")}</td>
-</tr>
-
-<tr>
-<td class="label">Subject</td>
-<td class="colon">:</td>
-<td class="value">${get("SUBJECT")}</td>
-</tr>
-
-<tr>
-<td class="label">Admission No.</td>
-<td class="colon">:</td>
-<td class="value">${get("ADMNO")}</td>
-</tr>
-
-<tr>
-<td class="label">Admission Date</td>
-<td class="colon">:</td>
-<td class="value">${get("ADMDATE")}</td>
-</tr>
-
-<tr>
-<td class="label">Blood Group</td>
-<td class="colon">:</td>
-<td class="value">${get("BG")}</td>
-</tr>
-
-<tr>
-<td class="label">Aadhaar No.</td>
-<td class="colon">:</td>
-<td class="value">${get("ADDAR")}</td>
-</tr>
-
-<tr>
-<td class="label">Address</td>
-<td class="colon">:</td>
-<td class="value">${get("ADDRESS")}</td>
-</tr>
-
-<tr>
-<td class="label">District</td>
-<td class="colon">:</td>
-<td class="value">${get("DIST")}</td>
-</tr>
-
-<tr>
-<td class="label">Mobile</td>
-<td class="colon">:</td>
-<td class="value">${get("MO")}</td>
-</tr>
-
-<tr>
-<td class="label">Email</td>
-<td class="colon">:</td>
-<td class="value">${get("EMAILID")}</td>
-</tr>
-
-<tr>
-<td class="label">ABC ID</td>
-<td class="colon">:</td>
-<td class="value">${get("ABCID")}</td>
-</tr>
-
-<tr>
-<td class="label">Status</td>
-<td class="colon">:</td>
-<td class="value">
-<span class="badge ${active ? 'green' : 'red'}">
-${get("STATUS")}
-</span>
-</td>
-</tr>
-
-</table>
-
-</div>
-
-<div class="qr-box">
-
-<img src="${qr}" alt="QR Code">
-
-<div class="userid">
-ID : ${userId}
-</div>
-
-<p style="margin-top:8px;font-size:12px;color:#555;">
-Scan QR to verify this Student ID
-</p>
-
-</div>
-
-<div class="footer">
-
-<div>
-<strong>Principal</strong>
-____________________
-</div>
-
-<div>
-<strong>College Seal</strong>
-(Official Seal)
-</div>
-
-</div>
-
-<div class="credit">
-Govt. Rani Durgawati College • Digital Student Identity Card
-</div>
-
-</div>
-`;
-
-})
-
-.catch(error => {
-
-card.innerHTML = `
-<div style="
-padding:40px;
-text-align:center;
-font-size:18px;
-color:red;
-font-weight:bold;
-">
-
-❌ ${error.message}
-
-</div>
-`;
-
-});
-
-}
-
-</script>
 
 </body>
+
 </html>
