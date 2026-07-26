@@ -317,170 +317,208 @@ text-align:center;
 
 <script>
 
-    const student = {
-    
-    NAME:"Rahul Kumar",
-    FNAME:"Shri Ram Kumar",
-    MNAME:"Smt. Sita Devi",
-    DOB:"15/08/2005",
-    CLASS:"B.Sc. Part-I",
-    SUBJECT:"Mathematics",
-    ADMNO:"202600123",
-    ADMDATE:"10/07/2026",
-    BG:"O+",
-    ADDAR:"1234 5678 9012",
-    ADDRESS:"Village Wadrafnagar",
-    DIST:"Balrampur",
-    MO:"9876543210",
-    EMAILID:"rahul@gmail.com",
-    ABCID:"ABC123456789",
-    STATUS:"ACTIVE",
-    PHOTO:"https://via.placeholder.com/120x140.png?text=PHOTO"
-    
-    };
-    
-    const active = student.STATUS.toLowerCase()=="active";
-    
-    const qr="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com";
-    
-    document.getElementById("card").innerHTML=`
-    
-    <div class="id-card">
-    
-    <div class="header">
-    
-    <img class="logo"
-    src="https://raw.githubusercontent.com/rdcollege/idcard/main/photo/LOGO.png">
-    
-    <div class="college">
-    
-    <h2>Govt. Rani Durgawati College</h2>
-    
-    <p>Wadrafnagar, Dist. Balrampur (C.G.)</p>
-    
-    </div>
-    
-    </div>
-    
-    <div class="title">
-    
-    STUDENT ID CARD
-    
-    </div>
-    
-    <div class="top">
-    
-    <img class="photo"
-    
-    src="${student.PHOTO}">
-    
-    <div class="session">
-    
-    <span>SESSION<br>2026-27</span>
-    
-    </div>
-    
-    </div>
-    
-    <div class="name">${student.NAME}</div>
-    
-    <div class="details">
-    
-    <table>
-    
-    <tr><td class="label">Father's Name</td><td class="colon">:</td><td class="value">${student.FNAME}</td></tr>
-    
-    <tr><td class="label">Mother's Name</td><td class="colon">:</td><td class="value">${student.MNAME}</td></tr>
-    
-    <tr><td class="label">DOB</td><td class="colon">:</td><td class="value">${student.DOB}</td></tr>
-    
-    <tr><td class="label">Class</td><td class="colon">:</td><td class="value">${student.CLASS}</td></tr>
-    
-    <tr><td class="label">Subject</td><td class="colon">:</td><td class="value">${student.SUBJECT}</td></tr>
-    
-    <tr><td class="label">Admission No.</td><td class="colon">:</td><td class="value">${student.ADMNO}</td></tr>
-    
-    <tr><td class="label">Admission Date</td><td class="colon">:</td><td class="value">${student.ADMDATE}</td></tr>
-    
-    <tr><td class="label">Blood Group</td><td class="colon">:</td><td class="value">${student.BG}</td></tr>
-    
-    <tr><td class="label">Aadhaar No.</td><td class="colon">:</td><td class="value">${student.ADDAR}</td></tr>
-    
-    <tr><td class="label">Address</td><td class="colon">:</td><td class="value">${student.ADDRESS}</td></tr>
-    
-    <tr><td class="label">District</td><td class="colon">:</td><td class="value">${student.DIST}</td></tr>
-    
-    <tr><td class="label">Mobile</td><td class="colon">:</td><td class="value">${student.MO}</td></tr>
-    
-    <tr><td class="label">Email</td><td class="colon">:</td><td class="value">${student.EMAILID}</td></tr>
-    
-    <tr><td class="label">ABC ID</td><td class="colon">:</td><td class="value">${student.ABCID}</td></tr>
-    
-    <tr>
-    
-    <td class="label">Status</td>
-    
-    <td class="colon">:</td>
-    
-    <td class="value">
-    
-    <span class="badge ${active?'green':'red'}">
-    
-    ${student.STATUS}
-    
-    </span>
-    
-    </td>
-    
-    </tr>
-    
-    </table>
-    
-    </div>
-    
-    <div class="qr-box">
-    
-    <img src="${qr}">
-    
-    <div class="userid">
-    
-    ID : 202600123
-    
-    </div>
-    
-    </div>
-    
-    <div class="footer">
-    
-    <div>
-    
-    <strong>Principal</strong>
-    
-    _________________
-    
-    </div>
-    
-    <div>
-    
-    <strong>College Seal</strong>
-    
-    (Official Seal)
-    
-    </div>
-    
-    </div>
-    
-    <div class="credit">
-    
-    Govt. Rani Durgawati College
-    
-    </div>
-    
-    </div>
-    
-    `;
-    
-    </script>
+   const sheetId = "1Ona1thP9bqtVGF4k7F8VGR5RGUKD9L01p-o68k5ziEk";
+const apiKey = "AIzaSyDFy7OEmx1dj4z2RzPhGA3_b4TNPgcIzEY";
+const sheetName = "IDCARD";
+
+const params = new URLSearchParams(window.location.search);
+const userId = params.get("id");
+
+const card = document.getElementById("card");
+
+if (!userId) {
+    card.innerHTML = "<h2 style='text-align:center;color:red'>USER ID Missing</h2>";
+} else {
+
+const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetName}?key=${apiKey}`;
+
+fetch(url)
+.then(res => res.json())
+.then(data => {
+
+const rows = data.values;
+const headers = rows[0];
+
+const idIndex = headers.indexOf("USERID");
+
+const row = rows.find(r => r[idIndex] == userId);
+
+if (!row) {
+    card.innerHTML = "<h2 style='text-align:center;color:red'>Student Not Found</h2>";
+    return;
+}
+
+const get = field => row[headers.indexOf(field)] || "";
+
+const active = get("STATUS").toLowerCase() == "active";
+const qr = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rdcollege.github.io/IDCARD26/STUDENTS.HTML?id=${userId}`;
+
+card.innerHTML = `
+
+<div class="id-card">
+
+<div class="header">
+
+<img class="logo"
+src="https://raw.githubusercontent.com/Rdcollege/IDCARD26/main/PHOTO/onlylylogo.png">
+
+<div class="college">
+
+<h2>Govt. Rani Durgawati College</h2>
+
+<p>Wadrafnagar, Dist. Balrampur (C.G.)</p>
+
+</div>
+
+</div>
+
+<div class="title">
+
+STUDENT ID CARD
+
+</div>
+
+<div class="top">
+
+<img class="photo"
+src="https://raw.githubusercontent.com/Rdcollege/IDCARD26/main/PHOTO/${get("PHOTO")}">
+
+<div class="session">
+
+<span>SESSION<br>2026-27</span>
+
+</div>
+
+</div>
+
+<div class="name">${get("NAME")}</div>
+
+<div class="details">
+
+<table>
+
+<tr><td class="label">Father's Name</td><td class="colon">:</td><td class="value">${get("FNAME")}</td></tr>
+
+<tr><td class="label">Mother's Name</td><td class="colon">:</td><td class="value">${get("MNAME")}</td></tr>
+
+<tr><td class="label">DOB</td><td class="colon">:</td><td class="value">${get("DOB")}</td></tr>
+
+<tr><td class="label">Class</td><td class="colon">:</td><td class="value">${get("CLASS")}</td></tr>
+
+<tr><td class="label">Subject</td><td class="colon">:</td><td class="value">${get("SUBJECT")}</td></tr>
+
+<tr><td class="label">Admission No.</td><td class="colon">:</td><td class="value">${get("ADMNO")}</td></tr>
+
+<tr><td class="label">Admission Date</td><td class="colon">:</td><td class="value">${get("ADMDATE")}</td></tr>
+
+<tr><td class="label">Blood Group</td><td class="colon">:</td><td class="value">${get("BG")}</td></tr>
+
+<tr><td class="label">Aadhaar No.</td><td class="colon">:</td><td class="value">${get("ADDAR")}</td></tr>
+
+<tr><td class="label">Address</td><td class="colon">:</td><td class="value">${get("ADDRESS")}</td></tr>
+
+<tr><td class="label">District</td><td class="colon">:</td><td class="value">${get("DIST")}</td></tr>
+
+<tr><td class="label">Mobile</td><td class="colon">:</td><td class="value">${get("MO")}</td></tr>
+
+<tr><td class="label">Email</td><td class="colon">:</td><td class="value">${get("EMAILID")}</td></tr>
+
+<tr><td class="label">ABC ID</td><td class="colon">:</td><td class="value">${get("ABCID")}</td></tr>
+
+<tr>
+
+<td class="label">Status</td>
+
+<td class="colon">:</td>
+
+<td class="value">
+
+<span class="badge ${active ? "green" : "red"}">
+
+${get("STATUS")}
+
+</span>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="qr-box">
+
+<img src="${qr}" alt="QR Code">
+
+<div class="userid">
+
+ID : ${userId}
+
+</div>
+
+<p style="margin-top:8px;font-size:12px;color:#555;">
+
+Scan QR to verify this Student ID
+
+</p>
+
+</div>
+
+<div class="footer">
+
+<div>
+
+<strong>Principal</strong>
+
+_________________
+
+</div>
+
+<div>
+
+<strong>College Seal</strong>
+
+(Official Seal)
+
+</div>
+
+</div>
+
+<div class="credit">
+
+Govt. Rani Durgawati College • Digital Student Identity Card
+
+</div>
+
+</div>
+
+`;
+})
+.catch(error => {
+
+card.innerHTML = `
+
+<div style="
+padding:40px;
+text-align:center;
+font-size:18px;
+color:red;
+font-weight:bold;
+">
+
+❌ ${error.message}
+
+</div>
+
+`;
+
+console.error(error);
+
+});
+
+}
+</script>
 
 
 
